@@ -12,7 +12,7 @@ const db = new pg.Client({
 
 db.connect();
 
-db.query("CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, title TEXT)");
+db.query("CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, title TEXT);");
 
 const app = express();  
 const port = 3000;
@@ -28,7 +28,7 @@ app.get("/", async (req, res) => {
     items = result.rows;
     console.log(items);
     res.render("index.ejs", {
-      listTitle: "Today",
+      listTitle: "To Do List",
       listItems: items,
     });
   } catch (err) {
